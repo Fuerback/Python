@@ -1,0 +1,16 @@
+import re
+
+nome = raw_input("Digite seu nome: ")
+sobrenome = raw_input("\nDigite seu sobrenome: ")
+e_mail = raw_input("\nDigite seu e-mail: ")
+telefone = raw_input("\nDigite seu telefone (somente numeros): ")
+nome_arquivo = raw_input("\nDigite o nome do arquvio que deseja salvar: ")
+nome_arquivo += ".vcard"
+
+if nome and sobrenome and e_mail and telefone:
+    arquivo = open(nome_arquivo,'w')
+    arquivo.write('BEGIN:VCARD\nVERSION:4.0\nN:%s;%s;;;\nFN: %s %s\nTEL;TYPE=work,voice;VALUE=uri:tel:%s\nEMAIL:%s\nEND:VCARD' % (sobrenome, nome, nome, sobrenome, telefone, e_mail))
+    arquivo.close()
+    print "\nO arquivo foi criado com sucesso!"                 
+else:
+    print "\nCorrija os campos acima"
