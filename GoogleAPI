@@ -1,0 +1,25 @@
+#!/usr/bin/python
+
+import time
+import gdata.spreadsheet.service
+
+spr_client = gdata.spreadsheet.service.SpreadsheetsService()
+spr_client.email = 'email@gmail.com'
+spr_client.password = 'senha'
+spr_client.source = 'Teste planilha'
+spr_client.ProgrammaticLogin()
+
+spreadsheet_key = '0AgSORFi7G0POdGZxS3VKQUU1YVhMTkloOEVCVC1mcnc'
+worksheet_id = 'od6'
+
+dicionario = {}
+dicionario['nome'] = raw_input("Nome: ")
+dicionario['email'] = raw_input("E-mail: ")
+dicionario['telefone'] = raw_input("Telefone: ")
+entry = spr_client.InsertRow(dicionario, spreadsheet_key, worksheet_id)
+
+
+if isinstance(entry, gdata.spreadsheet.SpreadsheetsList):
+  print "Linha inserida com sucesso"
+else:
+  print "Linha nao inserida"
