@@ -1,0 +1,38 @@
+import math
+import sys
+
+print "Para a funcao f(x)= ax2 - bx + c "
+
+
+valor_a = float(sys.argv[1]) 
+   
+valor_b = float(sys.argv[2]) 
+ 
+valor_c = float(sys.argv[3])
+
+def baskara (valor_a, valor_b, valor_c):
+
+    if valor_a == 0:
+        print 'Nao e uma funcao do 2 grau'
+
+  
+    else: 
+        delta = valor_b**2 - 4 * valor_a * valor_c 
+
+        print "Delta = %.2f" % delta
+
+        if (delta < 0): 
+            print "Equacao inexistente"
+    
+
+        elif (delta==0): 
+            raiz = (-valor_b + math.sqrt(delta))/2 * valor_a
+            print 'A unica raiz e %.2f' % raiz
+     
+        elif (delta > 0): 
+            raiz1 = (-valor_b + math.sqrt(delta))/2 * valor_a
+            raiz2 = (-valor_b - math.sqrt(delta))/2 * valor_a
+            
+            print 'As raizes da funcao sao: %.2f' % raiz1, raiz2
+
+print baskara(valor_a, valor_b, valor_c)
