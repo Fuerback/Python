@@ -1,0 +1,21 @@
+# -*- coding: UTF-8 -*-
+# ListGsme.py
+
+def ListGame():
+  kPoints = 0
+  numberoDigitado = input("Entrada: ")
+  while(numberoDigitado > 1):
+    menorDivisor = MenorDivisor(numberoDigitado)
+    numberoDigitado = numberoDigitado/menorDivisor
+    kPoints+=1
+  print "Saida:", kPoints
+
+def MenorDivisor(numberoDigitado):
+  divisor = 2
+  while (divisor <= numberoDigitado):
+    if (numberoDigitado % divisor == 0):
+      break
+    divisor += 1
+  return divisor
+
+ListGame()
