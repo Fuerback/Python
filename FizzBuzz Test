@@ -1,0 +1,35 @@
+# -*- coding: UTF-8 -*-
+# FizzBuzzTest.py
+
+def FizzBuzzTest():
+  number = 1
+  while(number <= 100):
+    if(IsMultipleOfThreeAndFive(number)):
+      print 'FizzBuzz'
+    elif(IsMultipleOfThree(number)):
+      print 'Fizz'
+    elif(IsMultipleOfFive(number)):
+      print 'Buzz'
+    else:
+      print(number)
+    number+=1
+
+def IsMultipleOfThreeAndFive(number):
+  if((number % 3 == 0) and (number % 5 == 0)):
+    return True
+  else:
+    return False
+
+def IsMultipleOfThree(number):
+  if (number % 3 == 0):
+    return True
+  else:
+    return False
+
+def IsMultipleOfFive(number):
+  if (number % 5 == 0):
+    return True
+  else:
+    return False
+
+FizzBuzzTest()
