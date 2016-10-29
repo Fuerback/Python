@@ -1,0 +1,31 @@
+# -*- coding: UTF-8 -*-
+# ChartingProgress.py
+
+def ChartingProgress():
+  posicaoCorreta = 0
+  log = open("test.txt", "r")
+  for line in log.readlines():
+    total = line.count('*')
+    colunas = len(line) - 2
+    posicaoCorreta=Escreve(total, colunas, posicaoCorreta)
+  log.close()
+
+def Escreve(total, colunas, posicaoCorreta):
+  print posicaoCorreta
+  col = colunas
+  result = open("result.txt", "a")
+  posicaoAtual = 0
+  while (posicaoAtual <= col):
+    if (total > 0 and posicaoAtual == posicaoCorreta):
+      result.write('*')
+      total -= 1
+      posicaoCorreta += 1
+    else:
+      result.write('.')
+    posicaoAtual += 1
+  result.write('\n')
+
+  result.close()
+  return posicaoCorreta
+
+ChartingProgress()
