@@ -4,25 +4,24 @@
 def ChartingProgress():
   posicaoCorreta = 0
   log = open("test.txt", "r")
+  posicaoCorreta = 0
   for line in log.readlines():
-    if(line == '\n'):
+    if not line.strip():
       posicaoCorreta = 0
-    total = line.count('*')
-    if(len(line) > 0):
-      colunas = len(line) - 2
+      EscreveLinhaBranca()
     else:
-      colunas = 0
-    posicaoCorreta=Escreve(total, colunas, posicaoCorreta)
+      colunas = len(line) - 2
+      totalAsterisco = line.count('*')
+      posicaoCorreta = EscreveLinha(totalAsterisco, colunas, posicaoCorreta)
   log.close()
 
-def Escreve(total, colunas, posicaoCorreta):
-  col = colunas
+def EscreveLinha(totalAsterisco, colunas, posicaoCorreta):
   result = open("result.txt", "a")
   posicaoAtual = 0
-  while (posicaoAtual <= col):
-    if (total > 0 and posicaoAtual == posicaoCorreta):
+  while (posicaoAtual <= colunas):
+    if (totalAsterisco > 0 and posicaoAtual == posicaoCorreta):
       result.write('*')
-      total -= 1
+      totalAsterisco -= 1
       posicaoCorreta += 1
     else:
       result.write('.')
@@ -31,5 +30,10 @@ def Escreve(total, colunas, posicaoCorreta):
 
   result.close()
   return posicaoCorreta
+
+def EscreveLinhaBranca():
+  result = open("result.txt", "a")
+  result.write('\n')
+  result.close()
 
 ChartingProgress()
