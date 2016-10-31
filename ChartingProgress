@@ -15,23 +15,23 @@ def ChartingProgress():
       if(atualizaColunas):
         colunas = len(line) - 2
         atualizaColunas = False
+        posicaoCorreta = colunas
       totalAsterisco = line.count('*')
       posicaoCorreta = EscreveLinha(totalAsterisco, colunas, posicaoCorreta)
+      posicaoCorreta-=totalAsterisco
   log.close()
 
 def EscreveLinha(totalAsterisco, colunas, posicaoCorreta):
   result = open("result.txt", "a")
   posicaoAtual = 0
-  while (posicaoAtual <= colunas):
-    if (totalAsterisco > 0 and posicaoAtual == posicaoCorreta):
+  while(posicaoAtual <= colunas):
+    if((posicaoAtual == posicaoCorreta - totalAsterisco+1) and totalAsterisco):
       result.write('*')
-      totalAsterisco -= 1
-      posicaoCorreta += 1
+      totalAsterisco-=1
     else:
       result.write('.')
-    posicaoAtual += 1
+    posicaoAtual+=1
   result.write('\n')
-
   result.close()
   return posicaoCorreta
 
