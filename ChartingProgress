@@ -5,12 +5,16 @@ def ChartingProgress():
   posicaoCorreta = 0
   log = open("test.txt", "r")
   posicaoCorreta = 0
+  atualizaColunas = True
   for line in log.readlines():
     if not line.strip():
       posicaoCorreta = 0
+      atualizaColunas = True
       EscreveLinhaBranca()
     else:
-      colunas = len(line) - 2
+      if(atualizaColunas):
+        colunas = len(line) - 2
+        atualizaColunas = False
       totalAsterisco = line.count('*')
       posicaoCorreta = EscreveLinha(totalAsterisco, colunas, posicaoCorreta)
   log.close()
