@@ -5,13 +5,17 @@ def ChartingProgress():
   posicaoCorreta = 0
   log = open("test.txt", "r")
   for line in log.readlines():
+    if(line == '\n'):
+      posicaoCorreta = 0
     total = line.count('*')
-    colunas = len(line) - 2
+    if(len(line) > 0):
+      colunas = len(line) - 2
+    else:
+      colunas = 0
     posicaoCorreta=Escreve(total, colunas, posicaoCorreta)
   log.close()
 
 def Escreve(total, colunas, posicaoCorreta):
-  print posicaoCorreta
   col = colunas
   result = open("result.txt", "a")
   posicaoAtual = 0
